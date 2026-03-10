@@ -13,3 +13,8 @@ class Portfolio:
 
     def add_stock(self, stock):
         self.stocks.append(stock)
+
+    def remove_stock(self, symbol):
+        for stock in self.stocks:
+            if stock.symbol == symbol:
+                self.stocks.remove(stock)

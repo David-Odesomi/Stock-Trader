@@ -1,5 +1,5 @@
 import json
-from src.stock_tracker.models import Stock, Portfolio
+from .models import Stock, Portfolio
 
 def save_portfolio(portfolio, filepath):
     data = [{"symbol": stock.symbol, "buy_price": stock.buy_price, "shares": stock.shares} for stock in portfolio.stocks]
@@ -9,9 +9,9 @@ def save_portfolio(portfolio, filepath):
 
 def load_portfolio(filepath):
     with open(filepath, "r") as f:
-        data= json.load(f)
+        data = json.load(f)
 
-    portfolio = stock
+    portfolio = Portfolio()
     for item in data:
         stock = Stock(item["symbol"], item["buy_price"], item["shares"])
         portfolio.add_stock(stock)
